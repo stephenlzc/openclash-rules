@@ -1,0 +1,75 @@
+{
+  "publicBaseUrl": "https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main",
+  "groups": [
+    {
+      "id": "ai-openai-twsg",
+      "provider": "AI_OPENAI_TWSG",
+      "policy": "🌏 台湾/新加坡 AI",
+      "count": 35,
+      "errors": []
+    },
+    {
+      "id": "usa-ai",
+      "provider": "USA_AI",
+      "policy": "🇺🇸 美国 AI",
+      "count": 80,
+      "errors": []
+    },
+    {
+      "id": "typeless",
+      "provider": "TYPELESS",
+      "policy": "📝 Typeless",
+      "count": 3,
+      "errors": []
+    },
+    {
+      "id": "google-hk",
+      "provider": "GOOGLE_HK",
+      "policy": "🇭🇰 香港",
+      "count": 743,
+      "errors": []
+    },
+    {
+      "id": "youtube-hk",
+      "provider": "YOUTUBE_HK",
+      "policy": "🇭🇰 香港",
+      "count": 183,
+      "errors": []
+    },
+    {
+      "id": "github-hk",
+      "provider": "GITHUB_HK",
+      "policy": "🇭🇰 香港",
+      "count": 34,
+      "errors": []
+    },
+    {
+      "id": "taiwan-shopee",
+      "provider": "TAIWAN_SHOPEE",
+      "policy": "🛒 台湾 Shopee",
+      "count": 1,
+      "errors": []
+    },
+    {
+      "id": "media-hk",
+      "provider": "MEDIA_HK",
+      "policy": "🇭🇰 香港",
+      "count": 953,
+      "errors": []
+    },
+    {
+      "id": "western-news",
+      "provider": "WESTERN_NEWS",
+      "policy": "🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区",
+      "count": 53,
+      "errors": []
+    },
+    {
+      "id": "direct-cn",
+      "provider": "DIRECT_CN",
+      "policy": "🎯 全球直连",
+      "count": 9,
+      "errors": []
+    }
+  ]
+}

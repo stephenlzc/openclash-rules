@@ -1,0 +1,159 @@
+{
+  "openclashPullBase": "https://gh.zhicong.cc",
+  "defaultInterval": 86400,
+  "groups": [
+    {
+      "id": "ai-openai-twsg",
+      "description": "OpenAI / ChatGPT / Codex，只走台湾或新加坡 AI",
+      "policy": "🌏 台湾/新加坡 AI",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/OpenAI/OpenAI.yaml"
+      ],
+      "rules": [
+        "DOMAIN-SUFFIX,oaiusercontent.com",
+        "DOMAIN,browser-intake-datadoghq.com"
+      ]
+    },
+    {
+      "id": "usa-ai",
+      "description": "Claude / Anthropic / Grok / Gemini / NotebookLM / Perplexity，固定走美国 AI",
+      "policy": "🇺🇸 美国 AI",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Claude/Claude.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Anthropic/Anthropic.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Gemini/Gemini.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Copilot/Copilot.yaml"
+      ],
+      "rules": [
+        "DOMAIN-SUFFIX,grok.com",
+        "DOMAIN-SUFFIX,x.ai",
+        "DOMAIN-SUFFIX,perplexity.ai",
+        "DOMAIN-SUFFIX,perplexity-ai.cloudflareaccess.com",
+        "DOMAIN,cdn.grok.com",
+        "DOMAIN,notebooklm.google.com",
+        "DOMAIN,www.perplexity.ai",
+        "DOMAIN,edge.perplexity.ai",
+        "DOMAIN,frontend-cdn.perplexity.ai",
+        "DOMAIN,pplx-next-static-public.perplexity.ai",
+        "DOMAIN,r2cdn.perplexity.ai",
+        "DOMAIN,suggest.perplexity.ai"
+      ]
+    },
+    {
+      "id": "typeless",
+      "description": "Typeless，单独成组",
+      "policy": "📝 Typeless",
+      "upstreams": [],
+      "rules": [
+        "DOMAIN,api.typeless.com",
+        "DOMAIN-SUFFIX,typeless.com",
+        "DOMAIN-SUFFIX,typeless-static.com"
+      ]
+    },
+    {
+      "id": "google-hk",
+      "description": "Google 主体，走香港",
+      "policy": "🇭🇰 香港",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Google/Google.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/GoogleFCM/GoogleFCM.yaml"
+      ],
+      "rules": [
+        "DOMAIN,beacons.gvt2.com"
+      ]
+    },
+    {
+      "id": "youtube-hk",
+      "description": "YouTube，走香港",
+      "policy": "🇭🇰 香港",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/YouTube/YouTube.yaml"
+      ],
+      "rules": []
+    },
+    {
+      "id": "github-hk",
+      "description": "GitHub 相关，走香港",
+      "policy": "🇭🇰 香港",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/GitHub/GitHub.yaml"
+      ],
+      "rules": [
+        "DOMAIN,release-assets.githubusercontent.com",
+        "DOMAIN,viewscreen.githubusercontent.com",
+        "DOMAIN,alive.github.com"
+      ]
+    },
+    {
+      "id": "taiwan-shopee",
+      "description": "Shopee 台湾，单独成组",
+      "policy": "🛒 台湾 Shopee",
+      "upstreams": [],
+      "rules": [
+        "DOMAIN-SUFFIX,shopee.tw"
+      ]
+    },
+    {
+      "id": "media-hk",
+      "description": "流媒体，走香港",
+      "policy": "🇭🇰 香港",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/GlobalMedia/GlobalMedia.yaml"
+      ],
+      "rules": []
+    },
+    {
+      "id": "western-news",
+      "description": "欧美新闻和各国网站，走欧美地区",
+      "policy": "🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区",
+      "upstreams": [
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/AFP/AFP.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/BBC/BBC.yaml",
+        "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/NYTimes/NYTimes.yaml"
+      ],
+      "rules": [
+        "DOMAIN-SUFFIX,apnews.com",
+        "DOMAIN-SUFFIX,ap.org",
+        "DOMAIN-SUFFIX,wsj.com",
+        "DOMAIN-SUFFIX,wsj.net",
+        "DOMAIN-SUFFIX,dowjones.io",
+        "DOMAIN-SUFFIX,thetimes.co.uk",
+        "DOMAIN-SUFFIX,reuters.com"
+      ]
+    },
+    {
+      "id": "direct-cn",
+      "description": "补充直连规则",
+      "policy": "🎯 全球直连",
+      "upstreams": [],
+      "rules": [
+        "DOMAIN-SUFFIX,gzhu.edu.cn",
+        "DOMAIN-SUFFIX,lan",
+        "DOMAIN-SUFFIX,local",
+        "DOMAIN-SUFFIX,localdomain",
+        "DOMAIN-SUFFIX,home.arpa",
+        "IP-CIDR,10.0.0.0/8,no-resolve",
+        "IP-CIDR,172.16.0.0/12,no-resolve",
+        "IP-CIDR,192.168.0.0/16,no-resolve",
+        "IP-CIDR,127.0.0.0/8,no-resolve"
+      ]
+    }
+  ],
+  "ruleOrder": [
+    "direct-cn",
+    "ai-openai-twsg",
+    "usa-ai",
+    "typeless",
+    "youtube-hk",
+    "google-hk",
+    "github-hk",
+    "taiwan-shopee",
+    "media-hk",
+    "western-news"
+  ],
+  "builtinRules": [
+    "GEOSITE,cn,🎯 全球直连",
+    "GEOIP,cn,🎯 全球直连,no-resolve",
+    "MATCH,🇭🇰 香港"
+  ]
+}

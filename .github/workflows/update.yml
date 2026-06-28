@@ -1,0 +1,33 @@
+name: 更新 OpenClash 规则
+
+on:
+  workflow_dispatch:
+  schedule:
+    # blackmatrix7/ios_rule_script 近期多在北京时间 02:20-03:50 更新。
+    # 这里使用北京时间 04:20 主更新，07:20 再兜底一次。
+    - cron: "20 20 * * *"
+    - cron: "20 23 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 生成规则
+        run: npm run check
+
+      - name: 提交更新
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update OpenClash rules"
+          file_pattern: "rules/*.yaml generated/*.yaml generated/*.list generated/*.json"

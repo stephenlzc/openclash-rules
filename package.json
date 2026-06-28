@@ -1,0 +1,14 @@
+{
+  "name": "openclash-rules",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-rules.mjs",
+    "check": "node scripts/build-rules.mjs --check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+

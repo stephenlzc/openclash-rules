@@ -1,0 +1,62 @@
+# 此文件由 scripts/build-rules.mjs 自动生成。
+rule-providers:
+  AI_OPENAI_TWSG:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/ai-openai-twsg.yaml
+    path: ./rule_provider/ai-openai-twsg.yaml
+    interval: 86400
+  USA_AI:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/usa-ai.yaml
+    path: ./rule_provider/usa-ai.yaml
+    interval: 86400
+  TYPELESS:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/typeless.yaml
+    path: ./rule_provider/typeless.yaml
+    interval: 86400
+  GOOGLE_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/google-hk.yaml
+    path: ./rule_provider/google-hk.yaml
+    interval: 86400
+  YOUTUBE_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/youtube-hk.yaml
+    path: ./rule_provider/youtube-hk.yaml
+    interval: 86400
+  GITHUB_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/github-hk.yaml
+    path: ./rule_provider/github-hk.yaml
+    interval: 86400
+  TAIWAN_SHOPEE:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/taiwan-shopee.yaml
+    path: ./rule_provider/taiwan-shopee.yaml
+    interval: 86400
+  MEDIA_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/media-hk.yaml
+    path: ./rule_provider/media-hk.yaml
+    interval: 86400
+  WESTERN_NEWS:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/western-news.yaml
+    path: ./rule_provider/western-news.yaml
+    interval: 86400
+  DIRECT_CN:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/direct-cn.yaml
+    path: ./rule_provider/direct-cn.yaml
+    interval: 86400

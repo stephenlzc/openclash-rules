@@ -1,0 +1,15 @@
+# 此文件由 scripts/build-rules.mjs 自动生成。
+rules:
+  - RULE-SET,DIRECT_CN,🎯 全球直连
+  - RULE-SET,AI_OPENAI_TWSG,🌏 台湾/新加坡 AI
+  - RULE-SET,USA_AI,🇺🇸 美国 AI
+  - RULE-SET,TYPELESS,📝 Typeless
+  - RULE-SET,YOUTUBE_HK,🇭🇰 香港
+  - RULE-SET,GOOGLE_HK,🇭🇰 香港
+  - RULE-SET,GITHUB_HK,🇭🇰 香港
+  - RULE-SET,TAIWAN_SHOPEE,🛒 台湾 Shopee
+  - RULE-SET,MEDIA_HK,🇭🇰 香港
+  - RULE-SET,WESTERN_NEWS,🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
+  - GEOSITE,cn,🎯 全球直连
+  - GEOIP,cn,🎯 全球直连,no-resolve
+  - MATCH,🇭🇰 香港
