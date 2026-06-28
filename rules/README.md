@@ -10,6 +10,7 @@
 - `google-hk.yaml`：Google 主体来自 `blackmatrix7/ios_rule_script`，目标香港。
 - `youtube-hk.yaml`：YouTube 来自 `blackmatrix7/ios_rule_script`，目标香港。
 - `github-hk.yaml`：GitHub 来自 `blackmatrix7/ios_rule_script`，另补充少量日志里见过的域名，目标香港。
+- `x-twitter-hk.yaml`：X / Twitter 来自 `blackmatrix7/ios_rule_script`，目标香港，不单独创建可见策略组。
 - `taiwan-shopee.yaml`：只包含 Shopee 台湾的个人补充规则，目标 `🛒 台湾 Shopee`；其他地区 Shopee 不强制放入台湾规则组。
 - `media-hk.yaml`：流媒体规则来自 `blackmatrix7/ios_rule_script`，目标 `🇭🇰 香港`。
 - `western-news.yaml`：欧美新闻和各国网站，AFP / BBC / NYTimes 来自 `blackmatrix7/ios_rule_script`，AP / WSJ / Reuters / The Times 等使用个人补充规则，目标 `🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区`。

@@ -85,6 +85,15 @@
       ]
     },
     {
+      "id": "x-twitter-hk",
+      "description": "X / Twitter，走香港",
+      "policy": "🇭🇰 香港",
+      "upstreams": [
+        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml"
+      ],
+      "rules": []
+    },
+    {
       "id": "taiwan-shopee",
       "description": "Shopee 台湾，单独成组",
       "policy": "🛒 台湾 Shopee",
@@ -147,6 +156,7 @@
     "youtube-hk",
     "google-hk",
     "github-hk",
+    "x-twitter-hk",
     "taiwan-shopee",
     "media-hk",
     "western-news"

@@ -36,6 +36,12 @@ rule-providers:
     url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/github-hk.yaml
     path: ./rule_provider/github-hk.yaml
     interval: 86400
+  X_TWITTER_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/x-twitter-hk.yaml
+    path: ./rule_provider/x-twitter-hk.yaml
+    interval: 86400
   TAIWAN_SHOPEE:
     type: http
     behavior: classical

@@ -17,6 +17,7 @@
 | YouTube | `🇭🇰 香港` |
 | Google 主体 | `🇭🇰 香港` |
 | GitHub 相关 | `🇭🇰 香港` |
+| X / Twitter | `🇭🇰 香港` |
 | Typeless | `📝 Typeless` |
 | ChatGPT / OpenAI / Codex | `🌏 台湾/新加坡 AI` |
 | Claude / Anthropic / Grok / Gemini / NotebookLM / Perplexity | `🇺🇸 美国 AI` |
@@ -41,6 +42,8 @@ openclash-rules/
   generated/
     rule-providers.yaml       # 可复制进 OpenClash 覆写脚本的 rule-providers 片段
     custom-rules.list         # 可复制进 OpenClash 自定义规则的 rules 片段
+  templates/
+    proxy-groups.yaml         # 无订阅 token 的精简代理组模板
   scripts/
     build-rules.mjs           # 生成规则文件
   .github/workflows/
@@ -160,6 +163,18 @@ config/sources.json
 - 删除自定义域名：从对应组的 `rules` 中删掉规则。
 
 自定义规则只用于补洞，不要把 blackmatrix7 已经维护的通用 `DOMAIN-SUFFIX` 列表复制到本仓库。
+
+## 代理组模板
+
+`templates/proxy-groups.yaml` 用于维护公开的精简代理组结构，不包含任何订阅地址或 token。
+
+路由器本地脚本可以读取这个模板，并把 `__PROVIDER_NAMES__` 替换为本机实际的 3 个订阅 provider 名称。
+
+敏感内容仍只放在路由器本地：
+
+- 订阅 URL
+- token
+- OpenClash UCI 实际配置
 
 ## OpenClash 接入方式
 
