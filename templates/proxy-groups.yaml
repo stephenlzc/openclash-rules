@@ -9,7 +9,7 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies:
-      - 🇼🇸 台湾节点
+      - TW 台湾节点
       - 🇸🇬 新加坡节点
 
   - name: 🇺🇸 美国 AI
@@ -39,7 +39,7 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies:
-      - 🇼🇸 台湾节点
+      - TW 台湾节点
 
   - name: 🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
     type: select
@@ -92,12 +92,12 @@ proxy-groups:
     filter: "(🇺🇸|美|\\bUS\\b|United States|USA|America|洛杉矶|圣何塞|纽约|西雅图|LAX|SFO|SEA|NYC)"
     use: __PROVIDER_NAMES__
 
-  - name: 🇼🇸 台湾节点
+  - name: TW 台湾节点
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
-    filter: "(🇹🇼|🇼🇸|台|\\bTW\\b|Taiwan|TWN|TPE)"
+    filter: "(台|\\bTW\\b|Taiwan|TWN|TPE)"
     use: __PROVIDER_NAMES__
 
   - name: 🇸🇬 新加坡节点
