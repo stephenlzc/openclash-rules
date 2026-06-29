@@ -60,6 +60,12 @@ rule-providers:
     url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/western-news.yaml
     path: ./rule_provider/western-news.yaml
     interval: 86400
+  OKX_WESTERN:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/okx-western.yaml
+    path: ./rule_provider/okx-western.yaml
+    interval: 86400
   DIRECT_CN:
     type: http
     behavior: classical

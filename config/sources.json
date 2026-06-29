@@ -131,6 +131,15 @@
       ]
     },
     {
+      "id": "okx-western",
+      "description": "OKX，实测香港兜底会被 DNS 私有地址污染影响，固定走欧美地区",
+      "policy": "🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区",
+      "upstreams": [],
+      "rules": [
+        "DOMAIN-SUFFIX,okx.com"
+      ]
+    },
+    {
       "id": "direct-cn",
       "description": "补充直连规则",
       "policy": "🎯 全球直连",
@@ -159,7 +168,8 @@
     "x-twitter-hk",
     "taiwan-shopee",
     "media-hk",
-    "western-news"
+    "western-news",
+    "okx-western"
   ],
   "builtinRules": [
     "GEOSITE,cn,🎯 全球直连",

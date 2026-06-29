@@ -56,7 +56,7 @@ proxy-groups:
     proxies:
       - 🇭🇰 香港
       - 🌐 其他地区
-      - 🚀 手动选择
+      - ♻️ 自动选择
 
   - name: 🚀 手动选择
     type: select

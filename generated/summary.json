@@ -72,6 +72,13 @@
       "errors": []
     },
     {
+      "id": "okx-western",
+      "provider": "OKX_WESTERN",
+      "policy": "🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区",
+      "count": 1,
+      "errors": []
+    },
+    {
       "id": "direct-cn",
       "provider": "DIRECT_CN",
       "policy": "🎯 全球直连",

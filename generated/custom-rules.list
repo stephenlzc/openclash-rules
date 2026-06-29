@@ -11,6 +11,7 @@ rules:
   - RULE-SET,TAIWAN_SHOPEE,🛒 台湾 Shopee
   - RULE-SET,MEDIA_HK,🇭🇰 香港
   - RULE-SET,WESTERN_NEWS,🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
+  - RULE-SET,OKX_WESTERN,🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
   - GEOSITE,cn,🎯 全球直连
   - GEOIP,cn,🎯 全球直连,no-resolve
   - MATCH,🇭🇰 香港
