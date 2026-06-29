@@ -1,0 +1,162 @@
+# OpenClash / Mihomo 本地精简代理组模板
+#
+# 这是本地模板，不包含任何订阅 URL 或 token。
+# use 字段已经写入本机实际 proxy-provider 名称。
+
+proxy-groups:
+  - name: 🌏 台湾/新加坡 AI
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies:
+      - TW 台湾节点
+      - 🇸🇬 新加坡节点
+
+  - name: 🇺🇸 美国 AI
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies:
+      - 🇺🇸 美国节点
+
+  - name: 🇭🇰 香港
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies:
+      - 🇭🇰 香港节点
+
+  - name: 📝 Typeless
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies:
+      - 🇭🇰 香港
+      - 🇺🇸 美国 AI
+
+  - name: 🛒 台湾 Shopee
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies:
+      - TW 台湾节点
+
+  - name: 🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
+    type: select
+    proxies:
+      - 🇺🇸 美国节点
+      - 🇨🇦 加拿大节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇩🇪 德国节点
+      - 🇳🇱 荷兰节点
+
+  - name: 🌐 其他节点
+    type: select
+    proxies:
+      - 🇭🇰 香港
+      - 🌐 其他地区
+      - ♻️ 自动选择
+
+  - name: 🚀 手动选择
+    type: select
+    use: [红杏云, GW树洞, UUone]
+    proxies:
+      - 🇭🇰 香港
+      - 🌏 台湾/新加坡 AI
+      - 🇺🇸 美国 AI
+      - 🇺🇸🇨🇦🇪🇺🇬🇧 欧美地区
+      - 🌐 其他节点
+      - 🎯 全球直连
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇭🇰 香港节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇭🇰|港|\\bHK\\b|Hong Kong|HongKong|HONG KONG|HKG|九龙|Kowloon)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇺🇸 美国节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇺🇸|美|\\bUS\\b|United States|USA|America|洛杉矶|圣何塞|纽约|西雅图|LAX|SFO|SEA|NYC)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: TW 台湾节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(台|\\bTW\\b|Taiwan|TWN|TPE)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇸🇬 新加坡节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇸🇬|新加坡|狮城|\\bSG\\b|Singapore|SIN)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇨🇦 加拿大节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇨🇦|加拿大|\\bCA\\b|Canada|CAN|温哥华|多伦多|YVR|YYZ)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇬🇧 英国节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇬🇧|英国|\\bUK\\b|United Kingdom|Britain|London|伦敦|GBR)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇫🇷 法国节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇫🇷|法国|\\bFR\\b|France|巴黎|FRA)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇩🇪 德国节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇩🇪|德国|\\bDE\\b|Germany|法兰克福|柏林|DEU)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🇳🇱 荷兰节点
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "(🇳🇱|荷兰|\\bNL\\b|Netherlands|阿姆斯特丹|AMS)"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🌐 其他地区
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    filter: "^(?!.*(港|HK|Hong Kong|美国|US|USA|日本|JP|新加坡|SG|台湾|TW|加拿大|CA|英国|UK|法国|FR|德国|DE|荷兰|NL)).*"
+    use: [红杏云, GW树洞, UUone]
+
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT

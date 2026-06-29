@@ -1,0 +1,332 @@
+---
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+proxy-providers:
+  红杏云:
+    type: http
+    url: https://redacted.invalid/subscription
+    interval: 3600
+    proxy: DIRECT
+    path: "./providers/Provider_765D6A.yaml"
+    exclude-filter: "(?i)(到期)|(套餐)|(邮箱)|(异常)|(更新)|(订阅)|(TG)|(tg)|(Tg)|(地址)|(ipv6)|(IPV6)|(Ipv6)|(IPv6)|(过期时间)|(剩余流量)|(TG群)|(官网)"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 300
+    override:
+      skip-cert-verify: true
+      udp: true
+  GW树洞:
+    type: http
+    url: https://redacted.invalid/subscription
+    interval: 3600
+    proxy: DIRECT
+    path: "./providers/Provider_2A1B22.yaml"
+    exclude-filter: "(?i)(到期)|(套餐)|(邮箱)|(异常)|(更新)|(订阅)|(TG)|(tg)|(Tg)|(地址)|(ipv6)|(IPV6)|(Ipv6)|(IPv6)|(过期时间)|(剩余流量)|(TG群)|(官网)"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 300
+    override:
+      skip-cert-verify: true
+      udp: true
+  UUone:
+    type: http
+    url: https://redacted.invalid/subscription
+    interval: 3600
+    proxy: DIRECT
+    path: "./providers/Provider_F500F0.yaml"
+    exclude-filter: "(?i)(到期)|(套餐)|(邮箱)|(异常)|(更新)|(订阅)|(TG)|(tg)|(Tg)|(地址)|(ipv6)|(IPV6)|(Ipv6)|(IPv6)|(过期时间)|(剩余流量)|(TG群)|(官网)"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 300
+    override:
+      skip-cert-verify: true
+      udp: true
+proxy-groups:
+- name: "\U0001F30F 台湾/新加坡 AI"
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - TW 台湾节点
+  - "\U0001F1F8\U0001F1EC 新加坡节点"
+- name: "\U0001F1FA\U0001F1F8 美国 AI"
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - "\U0001F1FA\U0001F1F8 美国节点"
+- name: "\U0001F1ED\U0001F1F0 香港"
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - "\U0001F1ED\U0001F1F0 香港节点"
+- name: "\U0001F4DD Typeless"
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - "\U0001F1ED\U0001F1F0 香港"
+  - "\U0001F1FA\U0001F1F8 美国 AI"
+- name: "\U0001F6D2 台湾 Shopee"
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - TW 台湾节点
+- name: "\U0001F1FA\U0001F1F8\U0001F1E8\U0001F1E6\U0001F1EA\U0001F1FA\U0001F1EC\U0001F1E7
+    欧美地区"
+  type: select
+  proxies:
+  - "\U0001F1FA\U0001F1F8 美国节点"
+  - "\U0001F1E8\U0001F1E6 加拿大节点"
+  - "\U0001F1EC\U0001F1E7 英国节点"
+  - "\U0001F1EB\U0001F1F7 法国节点"
+  - "\U0001F1E9\U0001F1EA 德国节点"
+  - "\U0001F1F3\U0001F1F1 荷兰节点"
+- name: "\U0001F310 其他节点"
+  type: select
+  proxies:
+  - "\U0001F1ED\U0001F1F0 香港"
+  - "\U0001F310 其他地区"
+  - "♻️ 自动选择"
+- name: "\U0001F680 手动选择"
+  type: select
+  use: &1
+  - 红杏云
+  - GW树洞
+  - UUone
+  proxies:
+  - "\U0001F1ED\U0001F1F0 香港"
+  - "\U0001F30F 台湾/新加坡 AI"
+  - "\U0001F1FA\U0001F1F8 美国 AI"
+  - "\U0001F1FA\U0001F1F8\U0001F1E8\U0001F1E6\U0001F1EA\U0001F1FA\U0001F1EC\U0001F1E7
+    欧美地区"
+  - "\U0001F310 其他节点"
+  - "\U0001F3AF 全球直连"
+- name: "♻️ 自动选择"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  use: *1
+- name: "\U0001F1ED\U0001F1F0 香港节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1ED\U0001F1F0|港|\\bHK\\b|Hong Kong|HongKong|HONG KONG|HKG|九龙|Kowloon)"
+  use: *1
+- name: "\U0001F1FA\U0001F1F8 美国节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1FA\U0001F1F8|美|\\bUS\\b|United States|USA|America|洛杉矶|圣何塞|纽约|西雅图|LAX|SFO|SEA|NYC)"
+  use: *1
+- name: TW 台湾节点
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(台|\\bTW\\b|Taiwan|TWN|TPE)"
+  use: *1
+- name: "\U0001F1F8\U0001F1EC 新加坡节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1F8\U0001F1EC|新加坡|狮城|\\bSG\\b|Singapore|SIN)"
+  use: *1
+- name: "\U0001F1E8\U0001F1E6 加拿大节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1E8\U0001F1E6|加拿大|\\bCA\\b|Canada|CAN|温哥华|多伦多|YVR|YYZ)"
+  use: *1
+- name: "\U0001F1EC\U0001F1E7 英国节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1EC\U0001F1E7|英国|\\bUK\\b|United Kingdom|Britain|London|伦敦|GBR)"
+  use: *1
+- name: "\U0001F1EB\U0001F1F7 法国节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1EB\U0001F1F7|法国|\\bFR\\b|France|巴黎|FRA)"
+  use: *1
+- name: "\U0001F1E9\U0001F1EA 德国节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1E9\U0001F1EA|德国|\\bDE\\b|Germany|法兰克福|柏林|DEU)"
+  use: *1
+- name: "\U0001F1F3\U0001F1F1 荷兰节点"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "(\U0001F1F3\U0001F1F1|荷兰|\\bNL\\b|Netherlands|阿姆斯特丹|AMS)"
+  use: *1
+- name: "\U0001F310 其他地区"
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "^(?!.*(港|HK|Hong Kong|美国|US|USA|日本|JP|新加坡|SG|台湾|TW|加拿大|CA|英国|UK|法国|FR|德国|DE|荷兰|NL)).*"
+  use: *1
+- name: "\U0001F3AF 全球直连"
+  type: select
+  proxies:
+  - DIRECT
+rules:
+- "RULE-SET,DIRECT_CN,\U0001F3AF 全球直连"
+- "RULE-SET,AI_OPENAI_TWSG,\U0001F30F 台湾/新加坡 AI"
+- "RULE-SET,USA_AI,\U0001F1FA\U0001F1F8 美国 AI"
+- "RULE-SET,TYPELESS,\U0001F4DD Typeless"
+- "RULE-SET,YOUTUBE_HK,\U0001F1ED\U0001F1F0 香港"
+- "RULE-SET,GOOGLE_HK,\U0001F1ED\U0001F1F0 香港"
+- "RULE-SET,GITHUB_HK,\U0001F1ED\U0001F1F0 香港"
+- "RULE-SET,X_TWITTER_HK,\U0001F1ED\U0001F1F0 香港"
+- "RULE-SET,TAIWAN_SHOPEE,\U0001F6D2 台湾 Shopee"
+- "RULE-SET,MEDIA_HK,\U0001F1ED\U0001F1F0 香港"
+- "RULE-SET,WESTERN_NEWS,\U0001F1FA\U0001F1F8\U0001F1E8\U0001F1E6\U0001F1EA\U0001F1FA\U0001F1EC\U0001F1E7
+  欧美地区"
+- "RULE-SET,OKX_WESTERN,\U0001F1FA\U0001F1F8\U0001F1E8\U0001F1E6\U0001F1EA\U0001F1FA\U0001F1EC\U0001F1E7
+  欧美地区"
+- "GEOSITE,private,\U0001F3AF 全球直连"
+- "GEOIP,private,\U0001F3AF 全球直连,no-resolve"
+- "RULE-SET,Custom_Direct_Domain,\U0001F3AF 全球直连"
+- "RULE-SET,Custom_Direct_Classical_IP,\U0001F3AF 全球直连"
+- "GEOSITE,google-cn,\U0001F3AF 全球直连"
+- "GEOSITE,category-games@cn,\U0001F3AF 全球直连"
+- "RULE-SET,Steam_CDN_Classical,\U0001F3AF 全球直连"
+- "GEOSITE,category-game-platforms-download,\U0001F3AF 全球直连"
+- "GEOSITE,category-public-tracker,\U0001F3AF 全球直连"
+- "GEOSITE,cn,\U0001F3AF 全球直连"
+- "GEOIP,cn,\U0001F3AF 全球直连,no-resolve"
+- "MATCH,\U0001F1ED\U0001F1F0 香港"
+rule-providers:
+  Custom_Direct_Domain:
+    type: http
+    behavior: domain
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Domain.yaml
+    path: "./providers/2305457515016618925_domain.yaml"
+    interval: 28800
+  Custom_Direct_Classical_IP:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Classical_IP.yaml
+    path: "./providers/15204165614954008964.yaml"
+    interval: 28800
+  Custom_Proxy_Domain:
+    type: http
+    behavior: domain
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Proxy_Domain.yaml
+    path: "./providers/10543794580940256312_domain.yaml"
+    interval: 28800
+  Custom_Proxy_Classical_IP:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Proxy_Classical_IP.yaml
+    path: "./providers/3673053372641237649.yaml"
+    interval: 28800
+  Steam_CDN_Classical:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Steam_CDN_Classical.yaml
+    path: "./providers/13268481674871578153.yaml"
+    interval: 28800
+  Custom_Port_Direct:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Port_Direct.yaml
+    path: "./providers/2451647452112462632.yaml"
+    interval: 28800
+  AI_OPENAI_TWSG:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/ai-openai-twsg.yaml
+    path: "./rule_provider/ai-openai-twsg.yaml"
+    interval: 86400
+  USA_AI:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/usa-ai.yaml
+    path: "./rule_provider/usa-ai.yaml"
+    interval: 86400
+  TYPELESS:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/typeless.yaml
+    path: "./rule_provider/typeless.yaml"
+    interval: 86400
+  GOOGLE_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/google-hk.yaml
+    path: "./rule_provider/google-hk.yaml"
+    interval: 86400
+  YOUTUBE_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/youtube-hk.yaml
+    path: "./rule_provider/youtube-hk.yaml"
+    interval: 86400
+  GITHUB_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/github-hk.yaml
+    path: "./rule_provider/github-hk.yaml"
+    interval: 86400
+  TAIWAN_SHOPEE:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/taiwan-shopee.yaml
+    path: "./rule_provider/taiwan-shopee.yaml"
+    interval: 86400
+  MEDIA_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/media-hk.yaml
+    path: "./rule_provider/media-hk.yaml"
+    interval: 86400
+  WESTERN_NEWS:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/western-news.yaml
+    path: "./rule_provider/western-news.yaml"
+    interval: 86400
+  DIRECT_CN:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/direct-cn.yaml
+    path: "./rule_provider/direct-cn.yaml"
+    interval: 86400
+  X_TWITTER_HK:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/x-twitter-hk.yaml
+    path: "./rule_provider/x-twitter-hk.yaml"
+    interval: 86400
+  OKX_WESTERN:
+    type: http
+    behavior: classical
+    url: https://gh.zhicong.cc/gh/stephenlzc/openclash-rules/raw/main/rules/okx-western.yaml
+    path: "./rule_provider/okx-western.yaml"
+    interval: 86400
+ipv6: false
+dns:
+  ipv6: false

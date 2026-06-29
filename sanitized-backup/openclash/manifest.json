@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-29T15:38:44Z",
+  "source_router": "192.168.31.132",
+  "sanitization": [
+    "proxy provider subscription URLs replaced with https://redacted.invalid/subscription",
+    "token/password/secret/uuid-like fields replaced with REDACTED",
+    "proxy node definitions omitted from allinone.sanitized.yaml",
+    "runtime cache, proxy_provider files, history DB, GeoIP/GeoSite databases, and backups omitted"
+  ],
+  "files": [
+    "config/allinone.sanitized.yaml",
+    "custom/openclash_custom_overwrite.sanitized.sh",
+    "custom/openclash_custom_rules.list",
+    "custom/proxy-groups.local.yaml",
+    "etc-config/dhcp.sanitized",
+    "etc-config/firewall.sanitized",
+    "etc-config/network.sanitized",
+    "etc-config/openclash.sanitized"
+  ]
+}

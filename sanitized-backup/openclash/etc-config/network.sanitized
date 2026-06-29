@@ -1,0 +1,57 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth1'
+	list ports 'eth2'
+	list ports 'eth3'
+	list ports 'dheth0'
+
+config device
+	option name 'eth1'
+	option macaddr '8a:f7:39:82:ed:d5'
+
+config device
+	option name 'eth2'
+	option macaddr '8a:f7:39:82:ed:d7'
+
+config device
+	option name 'eth3'
+	option macaddr '8a:f7:39:82:ed:d9'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	option ipaddr '192.168.31.132'
+	option netmask '255.255.255.0'
+	option gateway '192.168.31.200'
+	option peerdns '0'
+	list dns '192.168.31.200'
+
+config device
+	option name 'eth0'
+	option macaddr '8a:f7:39:82:ed:d4'
+
+config interface 'wan'
+	option device 'eth0'
+	option proto 'dhcp'
+	option defaultroute '0'
+
+config interface 'wan6'
+	option device 'eth0'
+	option proto 'none'
+	option disabled '1'
+
+config interface 'planb'
+	option proto 'dhcp'
+	option device 'br-lan'
+	option auto '0'
+
